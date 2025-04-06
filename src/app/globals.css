@@ -1,42 +1,236 @@
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+@import "./reset.css";
 * {
   box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- Importation des variables ---------------------------------------------------------------- */
+:root {
+  --foreground: #eff0feb9;
+  --a: #e3e7fd7e;
+  --hover: #00ff01ef;
+  --background-body: #00fb000c;
+  --border-article: 10px groove #21fe1c62;
+  --border-section: 10px groove#1AFF1678;
+  --background-section: #02fb0030;
+  --background-article: #11fc093f;
+  --heading-color: #a75ff5;
+  --heading-shadow: 0px 0px 8px #07fe0bf2;
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- Importation des polices ------------------------------------------------------------------ */
+/* -------- pour les h ----------- */
+@font-face {
+  font-family: "Orbitron";
+  src: url("/fonts/orbitron/subset-Orbitron-SemiBold.woff2") format("woff2"),
+    url("/fonts/orbitron/subset-Orbitron-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+@font-face {
+  font-family: "Orbitron";
+  src: url("/fonts/orbitron/subset-Orbitron-ExtraBold.woff2") format("woff2"),
+    url("/fonts/orbitron/subset-Orbitron-ExtraBold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+/* -------- pour les p,a etc ----------- */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/subset-Inter18pt-Regular.woff2") format("woff2"),
+    url("/fonts/inter/subset-Inter18pt-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/subset-Inter18pt-MediumItalic.woff2") format("woff2"),
+    url("/fonts/inter/subset-Inter18pt-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/subset-Inter18pt-SemiBold.woff2") format("woff2"),
+    url("/fonts/inter/subset-Inter18pt-SemiBold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+/* ---------------------------------------------------------------------------------------------------------------------------------------- */
+/* ---------------------------------------------- Styles GENERAL------------------------------------------------------------------ */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #001512;
+  /* --- Styles pour le main --- */
+  main {
+    width: 94%;
+    margin: 0 auto;
+  }
+  /* --- Styles pour les sections --- */
+  .sectionMain {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 4vh;
+    margin: 10vh auto;
+    border-radius: 25px;
+    padding: 2%;
+    border: var(--border-section);
+    background-color: var(--background-section);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+
+  /* --- Styles pour les sections --- */
+  .sectionMain:hover {
+    --border-section: 10px ridge rgb(156, 63, 255);
+    transition: border 1s ease, box-shadow 0.3s ease;
+  }
+  .sectionMain h2 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.4rem; /* Espace pour la ligne */
+  }
+  .sectionMain h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 0.4rem;
+    background: linear-gradient(
+      to right,
+      var(--hover),
+      /* violet pâle : #b67dfd */ var(--heading-color),
+      /* violet vif : #a75ff5 */ var(--a) /* gris clair : #dedede */
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s ease-in-out;
+    border-radius: 2px;
+  }
+
+  .sectionMain:hover h2::after {
+    transform: scaleX(1);
+  }
+  /* --- Styles pour les articles --- */
+  .articleMain {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+    border: var(--border-article);
+    gap: 1vh;
+    background-color: var(--background-article);
+  }
+  /* --- Styles pour les images --- */
+  .images {
+    width: 80%;
+    height: auto;
+    margin: 0 10%;
+    object-fit: cover;
+    filter: drop-shadow(20px 20px 20px rgba(128, 0, 128, 0.5));
+  }
+  /* ---------------------------------------------------------------------------------------------------------------------------------------- */
+  /* -------------------------------------------- Styles pour la typographie ------------------------------------------------------------------ */
+  /* --- Styles pour les titres --- */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--heading-color);
+    text-shadow: var(--heading-shadow);
+    text-align: center;
+    line-height: 1.2;
+  }
+  h1 {
+    font-size: clamp(1rem, 12vw, 3rem);
+    margin: 4vh auto;
+  }
+  h2 {
+    font-size: clamp(0.9rem, 8vw, 2.5rem);
+    margin: 3vh auto;
+  }
+  h3 {
+    font-size: clamp(0.8rem, 6vw, 2rem);
+    margin: 2vh auto;
+  }
+  h4 {
+    font-size: clamp(0.7rem, 4vw, 1.75rem);
+  }
+  h5 {
+    font-size: clamp(0.6rem, 3vw, 1.5rem);
+  }
+  h6 {
+    font-size: clamp(0.5rem, 2.5vw, 1.25rem);
+  }
+  /* --- Styles pour le texte et les liens --- */
+  p,
+  a,
+  li,
+  ul,
+  label {
+    font-family: "Inter", sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--foreground);
+    line-height: 1.8;
+  }
+
+  li,
+  ul,
+  a {
+    text-align: center;
+    font-size: clamp(1.5rem, 2.5vw, 1.125rem);
+  }
+  a {
+    color: var(--a);
+    text-decoration: none;
+  }
+  a:hover {
+    color: var(--hover);
+    transform: translateX(4px); /* petit effet Matrix stylé */
+    text-decoration: underline;
+  }
+  p {
+    white-space: pre-line;
+    text-align: center;
+  }
+  p.texte-boc {
+    text-align: center;
+    width: 90%;
+    margin: auto;
+  }
+
+  /* 
+---------------------------------------------------------------------------------------------------------------------------------------- */
+  /* -------------------------------------------- MEDIA 768 ------------------------------------------------------------------ */
+
+  @media (max-width: 768px) {
+    p {
+      padding: 0.5rem;
+    }
+  }
+
+  /* ---------------------------------------------------------------------------------------------------------------------------------------- */
+  /* -------------------------------------------- MEDIA 12024 ------------------------------------------------------------------ */
+  @media (min-width: 1024px) {
+    img:hover {
+      transform: translateY(-5px) scale(1.1);
+      transition: transform 0.3s ease;
+    }
   }
 }
