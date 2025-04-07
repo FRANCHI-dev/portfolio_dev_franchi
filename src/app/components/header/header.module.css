@@ -1,0 +1,167 @@
+/* ===== Styles généraux de l'en-tête (Mobile First) ===== */
+.siteHeader {
+  background-color: var(--background-body);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(10px); /* Support Safari */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 4vh;
+  position: relative; /* Ajoute cette ligne pour garantir le bon placement de l'en-tête */
+  z-index: 10; /* Ajoute un z-index plus bas pour l'en-tête */
+}
+
+/* ===== Conteneur de la navigation ===== */
+.nav {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin: auto;
+}
+
+/* ===== Styles du menu burger (Mobile First) ===== */
+.burgerMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  z-index: 1001; /* Plus haut que le z-index du site header */
+  background: #1a2333b3;
+  backdrop-filter: blur(20px);
+  border: 0px;
+}
+
+.burgerBar {
+  width: 18vw;
+  height: 3vh;
+  background-color: #b86bff;
+  margin: 4px 0;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Effet de transformation du menu burger en "X" lorsqu'il est ouvert */
+.burgerMenu.open .burgerBar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.burgerMenu.open .burgerBar:nth-child(2) {
+  opacity: 0;
+}
+.burgerMenu.open .burgerBar:nth-child(3) {
+  transform: translateY(-18px) rotate(-45deg);
+}
+
+/* ===== Styles du menu mobile (MODIFICATION) ===== */
+/* ===== Styles du menu mobile (fusion des deux blocs) ===== */
+.navMenu,
+.header-module__MIcRHW__navMenu {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: fixed; /* Le menu est maintenant fixé en haut */
+  top: 10vh; /* Décalage de 10vh pour une meilleure visibilité */
+  left: 0;
+  border: 0px;
+  width: 100%;
+  height: 80vh; /* Le menu occupe toute la hauteur de l'écran */
+  background: #0a0a0ae6; /* Fond sombre et semi-transparent */
+  gap: 4vh;
+  z-index: 1000; /* Le menu doit être au-dessus du reste du contenu */
+  transform: translateY(-100%); /* Initialement caché en dehors de l'écran */
+  transition: transform 0.5s ease-in-out; /* Transition fluide pour l'animation */
+}
+
+/* Affiche le menu quand il est ouvert */
+.navMenu.open,
+.header-module__MIcRHW__navMenu.open {
+  transform: translateY(
+    0
+  ); /* Affichage du menu avec une translation verticale */
+}
+
+/* Affichage du menu lorsque le burger est ouvert */
+.navMenu.open {
+  transform: translateY(0); /* Le menu devient visible lorsqu'il est
+   ouvert */
+}
+
+.li {
+  padding-top: 4vh;
+}
+
+/* ===== Détection de la page active avec "aria-current" ===== */
+.navItem a {
+  color: var(--a);
+}
+
+.navItem a:hover {
+  color: var(--hover);
+}
+
+/* ===== Détection de la page active avec "aria-current" ===== */
+.navItem a[aria-current="page"] {
+  color: #9b00b1; /* Violet pour le lien actif */
+  font-weight: bold; /* Optionnel: mettre le texte en gras */
+  text-decoration: underline; /* Optionnel: souligner le lien actif */
+}
+
+/* ===== Cacher le menu desktop par défaut en mobile ===== */
+.navMenuDesktop {
+  display: none;
+}
+
+/* ===== Version Desktop (au-delà de 762px) ===== */
+@media (min-width: 768px) {
+  .burgerMenu {
+    display: none;
+  }
+
+  .navMenuDesktop {
+    display: flex;
+    width: 80%;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  .navMenuDesktop .navItem a:hover {
+    transition: color 0.4s ease;
+    color: var(--hover);
+  }
+  /* ===== Ajout du conteneur du menu mobile animé ===== */
+  .navMenuWrapper {
+    position: fixed; /* Fixé à l'écran */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(
+      26,
+      35,
+      51,
+      0.9
+    ); /* Même fond que .navMenu pour cohérence */
+    z-index: 1000; /* Même niveau que .navMenu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .siteHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var(--background-header);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    height: 10vh; /* taille normale */
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    backdrop-filter: blur(6px);
+  }
+
+  /* Classe appliquée après scroll */
+  .shrink {
+    height: 5vh; /* rétrécie de moitié */
+    padding: 0 2rem;
+    backdrop-filter: blur(8px);
+    background-color: var(--background-header-scrolled, rgba(0, 0, 0, 0.8));
+  }
+}

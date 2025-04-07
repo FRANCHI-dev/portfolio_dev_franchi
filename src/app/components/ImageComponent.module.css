@@ -1,0 +1,11 @@
+/* ImageComponent.module.css */
+.imageWrapper {
+  display: inline-block;
+}
+
+.image {
+  max-width: 60%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}

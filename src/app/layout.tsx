@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Mon Portfolio – Version 1",
   description:
     "Un site vitrine propulsé par Next.js, avec un style tech et futuriste.",
+  viewport: "width=device-width, initial-scale=1.0",
 };
 
 export default function RootLayout({

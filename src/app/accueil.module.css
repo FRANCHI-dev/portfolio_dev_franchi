@@ -1,0 +1,116 @@
+/* ------------------------------------------------------------------------ */
+/* ------------------- STYLES PAR DÉFAUT (mobile) ------------------------- */
+/* ------------------------------------------------------------------------ */
+.images {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 25px;
+}
+.image_logo {
+  display: block;
+  width: 60%;
+  margin: 2vh auto;
+  padding: 10%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+}
+.competences_Section {
+  padding: 3vh 0;
+  margin-bottom: 5vh;
+  text-align: center;
+}
+.competences_Section h2 {
+  margin-bottom: 2rem;
+}
+.imagePresentation {
+  filter: drop-shadow(0 0 15px #00ff00aa);
+}
+.projetsSection {
+  padding-top: 4rem;
+  text-align: center;
+}
+.projetsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+.projet1,
+.projet2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.projetImage {
+  border-radius: 8px;
+  margin: 1rem 0;
+}
+.projetLink {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #0b140a;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+.projetLink:hover {
+  background-color: #963ccc;
+}
+/* ------------------------------------------------------------------------ */
+/* -------------------- TABLETTES ET + (≥ 768px) -------------------------- */
+/* ------------------------------------------------------------------------ */
+@media (min-width: 768px) {
+  .images {
+    width: 50%;
+  }
+  .imagePresentation {
+    filter: drop-shadow(0 0 25px #00ff00aa);
+  }
+  .projetsWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .projet1,
+  .projet2 {
+    width: 48%;
+    text-align: left;
+  }
+}
+/* ------------------------------------------------------------------------ */
+/* ---------------------- DESKTOP (≥ 1024px) ------------------------------ */
+/* ------------------------------------------------------------------------ */
+@media (min-width: 1024px) {
+  .images {
+    width: 30%;
+  }
+  .imagePresentation {
+    border: 2px solid limegreen;
+    filter: drop-shadow(0 0 35px #00ff00cc);
+  }
+  .image_logo {
+    width: 40%;
+  }
+  .competences_Section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .projet2 {
+    margin-top: 30vh;
+  }
+  .competences_Section h2 {
+    grid-column: 1 / -1;
+  }
+}
