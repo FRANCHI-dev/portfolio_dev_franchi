@@ -45,6 +45,12 @@ const Home = () => {
               "Entre sites web maintenus, projets personnels et expérimentations 3D, je trace mon parcours avec méthode, curiosité et une envie constante d'apprendre. J’aime comprendre les systèmes, résoudre des problèmes et donner forme aux idées, que ce soit dans le numérique ou dans des contextes plus concrets. Inspiré par la science-fiction et attiré par la précision du monde industriel, je vois la 3D comme un pont entre imagination et conception. Ce portfolio témoigne de cette exploration, entre technologie, rigueur et créativité."
             }
           </p>
+          <p>
+            {
+              "Si vous avez une mission à confier, une idée à explorer ou simplement envie d'échanger autour du code ou de la 3D, vous pouvez me contacter à l'adresse suivante : "
+            }
+            <strong>andrefranchi29@gmail.com</strong>
+          </p>
         </section>
 
         <section
